@@ -20,11 +20,18 @@ class Pile(object):
     def __init__(self, lst=[]):
         """
         Initialise la pile avec une liste.        
-        :param lst: Liste des éléments qui seront convertis en pile.
+        :param lst: Liste des éléments qui seront convertis en pile
         """
-        self.lst = lst        
+        self.lst = lst
     
     def __repr__(self):
+
+        print("Sommet")
+
+        for elt in self.lst.reverse():
+            print(f'||{elt}||')
+
+
         """
         Fournit une représentation en chaîne de la pile du sommet vers le bas.
         
@@ -61,6 +68,15 @@ class Pile(object):
         Retire l'élément au sommet de la pile et le retourne.        
         :return: L'élément qui était au sommet de la pile.
         """
+        if est_pile_vide() == True:
+            print("liste vide !")
+
+            return
+
+        else :
+
+            return self.lst.pop()
+        
         pass
        
     
@@ -69,7 +85,18 @@ class Pile(object):
         Retourne l'élément au sommet de la pile sans le retirer.        
         :return: L'élément au sommet de la pile.
         """
+        if est_pile_vide() == True:
+            print("liste vide !")
+
+            return
+
+        else :
+
+            return self.lst[:-1]
+        
         pass
+
+        
 
     def est_pile_vide(self):
         """
