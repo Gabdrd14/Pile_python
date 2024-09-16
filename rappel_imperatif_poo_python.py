@@ -17,16 +17,12 @@ empilée, puis dépilée lorsqu'on annule la frappe ;
 ============================Exercice 1:Compléter le code de la classe Pile
 '''
 class Pile(object):
-    def __init__(self, lst):
+    def __init__(self, lst=[]):
         """
         Initialise la pile avec une liste.        
         :param lst: Liste des éléments qui seront convertis en pile
         """
         self.lst = lst
-
-
-
-        pass        
     
     def __repr__(self):
 
@@ -47,17 +43,24 @@ class Pile(object):
         ||5||
          Bas        
         """
-        pass
-        
-    
+        chaine = "Sommet"
+        if self.est_pile_vide() == False:
+            
+            for elt in self.lst.reverse() :
+                chaine  += f"\n||{elt}||\n"
+            
+        else:
+            chaine += "\n|| ||\n"
+        chaine += "Bas"
+
+        return chaine
+
     def empiler(self, e):
         """
         Ajoute un élément au sommet de la pile.        
         :param e: Élément à empiler.
         """
-        
-
-        pass
+        self.lst.append(e)
        
     
     def depiler(self):
@@ -100,14 +103,19 @@ class Pile(object):
         Vérifie si la pile est vide.        
         :return: True si la pile est vide, False sinon.
         """
-        pass
+        verf = False
+
+        if self.lst == []:
+            verf = True
+
+        return verf
     
     def hauteur(self):
         """
         Retourne le nombre d'éléments dans la pile.        
         :return: La hauteur de la pile.
         """
-        pass
+        return len(self.lst)
 
 '''
 Exercice 2- Expressions bien parenthésées
@@ -165,17 +173,17 @@ if __name__ == "__main__":
     
     pile = Pile([])
     print(pile)
-    pile.empiler(-5)
-    pile.empiler(-8)
-    print(pile)
-    print(f"Pile est vide? {pile.est_pile_vide()}")
-    print(f"Hauteur de pile: {pile.hauteur()}")
-    print(f"Sommet: {pile.depiler()}")
+    #pile.empiler(-5)
+    #pile.empiler(-8)
+    #print(pile)
+    #print(f"Pile est vide? {pile.est_pile_vide()}")
+    #print(f"Hauteur de pile: {pile.hauteur()}")
+    #print(f"Sommet: {pile.depiler()}")
     
-    print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    #print('Bien Parenthésée? ', parenthesage("(([{]}))"))
     
-    exp = ['3','42','13', '+', '*', '5','-']
-    print(f"{exp} = {polonaise(exp)}")
+    #exp = ['3','42','13', '+', '*', '5','-']
+    #print(f"{exp} = {polonaise(exp)}")
        
 
     
