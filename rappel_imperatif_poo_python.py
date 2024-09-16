@@ -25,13 +25,6 @@ class Pile(object):
         self.lst = lst
     
     def __repr__(self):
-
-        print("Sommet")
-
-        for elt in self.lst.reverse():
-            print(f'||{elt}||')
-
-
         """
         Fournit une représentation en chaîne de la pile du sommet vers le bas.
         
@@ -46,12 +39,12 @@ class Pile(object):
         chaine = "Sommet"
         if self.est_pile_vide() == False:
             
-            for elt in self.lst.reverse() :
-                chaine  += f"\n||{elt}||\n"
+            for ind in range(len(self.lst) -1, -1, -1):
+                chaine  += f"\n||{self.lst[ind]}||"
             
         else:
-            chaine += "\n|| ||\n"
-        chaine += "Bas"
+            chaine += "\n|| ||"
+        chaine += "\nBas"
 
         return chaine
 
@@ -68,16 +61,14 @@ class Pile(object):
         Retire l'élément au sommet de la pile et le retourne.        
         :return: L'élément qui était au sommet de la pile.
         """
-        if est_pile_vide() == True:
+        if self.est_pile_vide() == True:
             print("liste vide !")
 
-            return
+            return 
 
         else :
 
             return self.lst.pop()
-        
-        pass
        
     
     def sommet(self):
@@ -85,10 +76,9 @@ class Pile(object):
         Retourne l'élément au sommet de la pile sans le retirer.        
         :return: L'élément au sommet de la pile.
         """
-        if est_pile_vide() == True:
-            print("liste vide !")
-
-            return
+        if self.est_pile_vide() == True:
+            print("Pile vide !")
+            return None
 
         else :
 
@@ -173,12 +163,12 @@ if __name__ == "__main__":
     
     pile = Pile([])
     print(pile)
-    #pile.empiler(-5)
-    #pile.empiler(-8)
-    #print(pile)
-    #print(f"Pile est vide? {pile.est_pile_vide()}")
-    #print(f"Hauteur de pile: {pile.hauteur()}")
-    #print(f"Sommet: {pile.depiler()}")
+    pile.empiler(-5)
+    pile.empiler(-8)
+    print(pile)
+    print(f"Pile est vide? {pile.est_pile_vide()}")
+    print(f"Hauteur de pile: {pile.hauteur()}")
+    print(f"Sommet: {pile.depiler()}")
     
     #print('Bien Parenthésée? ', parenthesage("(([{]}))"))
     
