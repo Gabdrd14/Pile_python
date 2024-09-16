@@ -124,8 +124,37 @@ print('Bien Parenthésée? ', parenthage("(([{]}))"))
 '''
 def parenthesage(expr):
     # les fermants sont rangés dans le même ordre que les ouvrants
-    ouv, fer =  ['(','[','('], [')',']', '}'] 
-    pass
+    ouv, fer =  ['(','[','{'], [')',']', '}'] 
+    pile_ferm = Pile([])
+
+    # 1ère étape : empiler les caractères fermantes et ouvrantes
+    for car in expr :
+        if car in ouv :
+            # Pour les caractères ouvrantes
+
+            ## Vérifier quelle caractère ouvrante
+            if car == "(" :
+                pile_ferm.empiler(")")
+            elif car == "{":
+                pile_ferm.empiler("}")
+            else:
+                pile_ferm.empiler("]")
+        
+        if car in fer :
+            # Pour les caractères fermantes
+
+            ## Vérification si le caractère fermante correspond à celui de la pile
+            val = pile_ferm.depiler()
+
+            if val != car :
+                print("affiche: False car Un fermant ferme un ouvrant qui ne lui correspond pas.")
+                return False
+    
+    if pile_ferm.est_pile_vide():
+        return True
+    else:
+        print("affiche: False car Il y a un ouvrant de trop.")
+        return False
 
 '''
 Exrecice 3: Notation Polonaise
@@ -170,7 +199,8 @@ if __name__ == "__main__":
     print(f"Hauteur de pile: {pile.hauteur()}")
     print(f"Sommet: {pile.depiler()}")
     
-    #print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    print('Bien Parenthésée? ', parenthesage("(([]))"))
     
     #exp = ['3','42','13', '+', '*', '5','-']
     #print(f"{exp} = {polonaise(exp)}")
